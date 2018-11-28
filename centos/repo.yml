@@ -1,0 +1,11 @@
+- hosts: all
+  remote_user: root
+  tasks:
+      - name: Add EPEL
+        yum: yum install epel-release
+
+      - name: Add ELRepo
+        rpm: {{ item }}
+        with_items:
+            - --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+            - -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
