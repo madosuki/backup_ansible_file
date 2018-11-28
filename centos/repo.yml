@@ -2,10 +2,10 @@
   remote_user: root
   tasks:
       - name: Add EPEL
-        yum: yum install epel-release
+        yum: name=epel-release state=absent
 
       - name: Add ELRepo
-        rpm: {{ item }}
+        command: rpm {{ item }} creates=/etc/yum.repos.d/elrepo.repo
         with_items:
             - --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
             - -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
