@@ -1,5 +1,6 @@
-- hosts: all
-  remote_user: root
+- hosts: my_server
+  become: yes
+  user: kouf
   tasks:
       - name: Add EPEL
         yum: name=epel-release state=absent

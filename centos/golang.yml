@@ -1,0 +1,8 @@
+- hosts: my_server
+  become: yes
+  user: kouf
+  tasks:
+      - name: golang install
+        yum: name=golang state=absent
+      - name: golang update
+        yum: name=golang state=latest
