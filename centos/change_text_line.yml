@@ -1,0 +1,11 @@
+- name: nyan
+  hosts: my_server
+  user: kouf
+  tasks: 
+    - name: change line
+      lineinfile:
+        path: /home/kouf/sample_text
+        state: present
+        backrefs: yes
+        regexp: '^E\s*'
+        line: 'example'
