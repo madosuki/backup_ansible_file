@@ -1,0 +1,14 @@
+- hosts: my_server
+  become: yes
+  user: kouf
+  tasks:
+      - name: Add Remi
+        command: rpm {{ item }} creates=/etc/yum.repos.d/remi.repo
+        with_items:
+            - -Uvh https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+      - name: Add Remi-PHP
+        yum: name={{ item }} enablerepo=remi,epel,remi-php73 state=present
+        with_items:
+            - php
+            - php-fpm
