@@ -3,7 +3,7 @@
   user: kouf
   tasks:
       - name: Add EPEL
-        yum: name=epel-release state=absent
+        yum: name=epel-release state=present
 
       - name: Add ELRepo
         command: rpm {{ item }} creates=/etc/yum.repos.d/elrepo.repo
