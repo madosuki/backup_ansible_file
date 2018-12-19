@@ -8,7 +8,4 @@
             - -Uvh https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
       - name: Add Remi-PHP
-        yum: name={{ item }} enablerepo=remi,epel,remi-php73 state=present
-        with_items:
-            - php
-            - php-fpm
+        yum: name=[u'php', u'php-fpm'] enablerepo=remi,epel,remi-php73 state=present

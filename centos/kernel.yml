@@ -1,0 +1,19 @@
+- hosts: my_server
+  become: yes
+  user: kouf
+  tasks:
+      - name: Add kernel-ml
+        yum: name=kernel-ml enablerepo=elrepo-kernel state=present
+
+      - name: Swap kernel
+        command: yum swap {{ item }} --enablerepo=elrepo-kernel
+        with_items:
+            - kernel-headers -- kernel-ml-headers
+            - kernel-tools-libs kernel-tools -- kernel-ml-tools-libs kernel-ml-tools
+
+      - name: Change Grub2
+        command: grub2-set-default 0
+
+      - name: reboot
+        reboot:
+            connect_timeout: 600
