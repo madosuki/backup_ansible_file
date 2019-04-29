@@ -4,6 +4,11 @@
   user: kouf
   tasks:
       - name: golang install
-        yum: name=golang state=present
+        yum:
+            name: golang
+            state: present
+
       - name: golang update
-        yum: name=golang state=latest
+        yum:
+            name: golang
+            state: latest

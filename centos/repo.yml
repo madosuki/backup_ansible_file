@@ -10,3 +10,11 @@
         with_items:
             - --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
             - -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+
+      - name: Add Remi
+        yum:
+            name: https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+      - name: Update yum
+        yum: 
+            state: latest

@@ -3,7 +3,10 @@
   user: kouf
   tasks:
       - name: Add kernel-ml
-        yum: name=kernel-ml enablerepo=elrepo-kernel state=present
+        yum:
+            name: kernel-ml
+            enablerepo: elrepo-kernel
+            state: present
 
       - name: Swap kernel
         command: yum swap {{ item }} --enablerepo=elrepo-kernel
